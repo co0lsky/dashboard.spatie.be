@@ -7,12 +7,18 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 class VerifyCsrfToken extends BaseVerifier
 {
     /**
-     * The URIs that should be excluded from CSRF verification.
+     * Indicates whether the XSRF-TOKEN cookie should be set on the response.
      *
-     * @var array
+     * @var bool
      */
+    protected $addHttpCookie = true;
+
     protected $except = [
+        '/temperature',
         '/webhook/github',
         '/pusher/authenticate',
+        '/oh-dear-webhooks',
+        '/broadcasting/auth',
+        '/laravel-websockets/auth',
     ];
 }
